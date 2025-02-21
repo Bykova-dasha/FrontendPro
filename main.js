@@ -1,2 +1,4 @@
-console.log("Hello");
-console.log(5);
+let number = 10369;
+let digits = number.toString().split('');
+console.log(digits.join(' '));
+
