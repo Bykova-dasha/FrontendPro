@@ -1,2 +1,4 @@
-console.log("Hello");
-console.log(5);
+//l4 hm1
+
+let userName = prompt("Whats your name?:");
+alert(`Hello, ${userName}! How are you?`);
