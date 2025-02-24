@@ -72,3 +72,30 @@ if (sport !== null){
     }
 }
 alert(message);
+
+
+
+
+
+//l4hm4
+
+let numOrStr = prompt('Input number or string');
+console.log(numOrStr);
+
+
+switch (numOrStr) {
+    case null:
+        console.log('Ви скасували');
+        break;
+    case '':
+    case ' ':
+        console.log('Empty String');
+        break;
+    default:
+        if (isNaN(+numOrStr)) {
+            console.log('Number is Ba_NaN');
+        } else {
+            console.log('OK!');
+        }
+        break;
+}
