@@ -19,3 +19,15 @@ for (let dollars = 10; dollars <= 100; dollars += 10) {
 
 
 //L5hm3
+
+let N = parseInt(prompt("Enter an integer N:"));
+
+for (let i = 1; i <= 100; i++) {
+    if (i * i > N) {
+        break;
+    }
+    console.log(i);
+}
+
+
+//L5hm4
