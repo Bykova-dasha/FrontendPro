@@ -1,14 +1,26 @@
 
+// updated hm1
+
+function removeChars(str, charsToRemove) {
+    let charsSet = new Set(charsToRemove);
+    return str.split("").filter(char => !charsSet.has(char)).join("");
+}
+
+
+let result = removeChars("hello world", "ld ");
+console.log(result);
+
+
 //l6hm1
 
-let str = "hello world";
-console.log(str);
-
-let chars = str.split("");
-chars = chars.filter(char => char !== 'l' && char !== 'd');
-str = chars.join("");
-
-console.log(str);
+//let str = "hello world";
+// console.log(str);
+//
+// let chars = str.split("");
+// chars = chars.filter(char => char !== 'l' && char !== 'd');
+// str = chars.join("");
+//
+// console.log(str);
 
 
 
