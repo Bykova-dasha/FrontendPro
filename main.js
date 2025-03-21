@@ -61,5 +61,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const randomNumber = Math.floor(Math.random() * 9) + 1;
     imageElement.src = `images/${randomNumber}.jpg`;
-    imageElement.alt = `Зображення ${randomNumber}`;
+    imageElement.alt = `image ${randomNumber}`;
 });
