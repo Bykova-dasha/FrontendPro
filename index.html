@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="container">
+    <h2>We would like to help you</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Name">
+        <div class="error" id="nameError"></div>
+
+        <textarea id="message" placeholder="Message"></textarea>
+        <div class="error" id="messageError"></div>
+
+        <h4>HOW TO ANSWER YOU?</h4>
+        <input type="text" id="phone" placeholder="Phone number">
+        <div class="error" id="phoneError"></div>
+
+        <input type="text" id="email" placeholder="Email">
+        <div class="error" id="emailError"></div>
+
+        <button type="submit">Send message</button>
+    </form>
+</div>
+
 
 <script src="main.js"></script>
 </body>
