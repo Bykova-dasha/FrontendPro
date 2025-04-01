@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.slider-container {
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: white;
+}
+.slider img {
+    width: 100%;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+.slider img.active {
+    display: block;
+    opacity: 1;
+}
+.buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.buttons button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.buttons button.hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.dots span {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.dots span.active {
+    background: #007bff;
+}
