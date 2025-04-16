@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 50px;
+}
+
+#timer {
+    font-size: 2.5em;
+    margin-top: 20px;
+}
