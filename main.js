@@ -1,38 +1,53 @@
-
-const apiKey = 'c94e7b8e64c16d13981c9468b6049b08';
-const city = 'Kharkiv';
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=uk`;
-
-const weatherContainer = document.querySelector("#weather-widget");
-
-function renderWeather(weatherData) {
-    const icon = weatherData.weather[0].icon;
-
-    const weatherInfo = `
-                <div>Місто: ${weatherData.name}</div>
-                <div>Температура: ${weatherData.main.temp}°C</div>
-                <div>Опис: ${weatherData.weather[0].description}</div>
-                <div>Вологість: ${weatherData.main.humidity}%</div>
-                <div><img src="https://openweathermap.org/img/wn/${icon}@4x.png" alt="Weather Icon"></div> 
-            `;
-
-    weatherContainer.innerHTML = `
-                <h3>Погода</h3>
-                ${weatherInfo}
-                <button id="update-btn">Оновити</button>
-            `;
-}
-
-function getWeather() {
-    fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => renderWeather(data))
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-            alert('Помилка під час отримання даних про погоду');
+$(document).ready(function () {
+    function saveTasks() {
+        const tasks = [];
+        $('#todo-list .task-text').each(function () {
+            tasks.push($(this).text());
         });
-}
-
-window.onload = getWeather;
-
-document.getElementById('update-btn').addEventListener('click', getWeather);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach(task => {
+            addTaskToList(task);
+        });
+    }
+    function addTaskToList(taskText) {
+        $('#todo-list').append(`
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="task-text" style="cursor:pointer;">${taskText}</span>
+          <div>
+            <button class="btn btn-sm btn-warning edit-task me-1">Редагувати</button>
+            <button class="btn btn-sm btn-danger delete-task">Видалити</button>
+          </div>
+        </li>
+      `);
+    }
+    loadTasks();
+    $('#add-task').on('click', function () {
+        const taskText = $('#new-task').val().trim();
+        if (taskText) {
+            addTaskToList(taskText);
+            saveTasks();
+            $('#new-task').val('');
+        }
+    });
+    $('#todo-list').on('click', '.task-text', function () {
+        const text = $(this).text();
+        $('#modalTaskText').text(text);
+        new bootstrap.Modal(document.getElementById('taskModal')).show();
+    });
+    $('#todo-list').on('click', '.delete-task', function () {
+        $(this).closest('li').remove();
+        saveTasks();
+    });
+    $('#todo-list').on('click', '.edit-task', function () {
+        const $taskSpan = $(this).closest('li').find('.task-text');
+        const currentText = $taskSpan.text();
+        const newText = prompt('Редагувати завдання:', currentText);
+        if (newText !== null && newText.trim() !== '') {
+            $taskSpan.text(newText.trim());
+            saveTasks();
+        }
+    });
+});
