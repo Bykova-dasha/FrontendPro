@@ -1,30 +1,29 @@
-$(document).ready(function () {
-    function saveTasks() {
+$(document).ready(() => {
+    const saveTasks = () => {
         const tasks = [];
         $('#todo-list .task-text').each(function () {
             tasks.push($(this).text());
         });
         localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-    function loadTasks() {
+    };
+    const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        tasks.forEach(task => {
-            addTaskToList(task);
-        });
-    }
-    function addTaskToList(taskText) {
+        tasks.forEach(task => addTaskToList(task));
+    };
+    const addTaskToList = (taskText) => {
         $('#todo-list').append(`
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="task-text" style="cursor:pointer;">${taskText}</span>
-          <div>
-            <button class="btn btn-sm btn-warning edit-task me-1">Редагувати</button>
-            <button class="btn btn-sm btn-danger delete-task">Видалити</button>
-          </div>
-        </li>
-      `);
-    }
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="task-text" style="cursor:pointer;">${taskText}</span>
+                <div>
+                    <button class="btn btn-sm btn-warning edit-task me-1">Редагувати</button>
+                    <button class="btn btn-sm btn-danger delete-task">Видалити</button>
+                </div>
+            </li>
+        `);
+    };
+
     loadTasks();
-    $('#add-task').on('click', function () {
+    $('#add-task').on('click', () => {
         const taskText = $('#new-task').val().trim();
         if (taskText) {
             addTaskToList(taskText);
@@ -45,7 +44,7 @@ $(document).ready(function () {
         const $taskSpan = $(this).closest('li').find('.task-text');
         const currentText = $taskSpan.text();
         const newText = prompt('Редагувати завдання:', currentText);
-        if (newText !== null && newText.trim() !== '') {
+        if (newText && newText.trim() !== '') {
             $taskSpan.text(newText.trim());
             saveTasks();
         }
