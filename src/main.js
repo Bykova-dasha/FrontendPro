@@ -50,3 +50,5 @@ $(document).ready(() => {
         }
     });
 });
+import './styles.scss';
+

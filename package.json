@@ -4,11 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
   },
   "private": true,
   "devDependencies": {
     "@babel/cli": "^7.27.0",
-    "@babel/preset-env": "^7.26.9"
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1",
+    "webpack-merge": "^6.0.1"
   }
 }

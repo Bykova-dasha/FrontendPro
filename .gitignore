@@ -21,3 +21,5 @@ chrome-user-data
 .idea
 
 .vscode
+/dist/
+/style.css
