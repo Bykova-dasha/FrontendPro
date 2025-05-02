@@ -8,20 +8,25 @@ $(document).ready(() => {
     };
     const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        // Завантажуємо тільки якщо задача ще не існує
         tasks.forEach(task => addTaskToList(task));
     };
     const addTaskToList = (taskText) => {
-        $('#todo-list').append(`
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="task-text" style="cursor:pointer;">${taskText}</span>
-                <div>
-                    <button class="btn btn-sm btn-warning edit-task me-1">Редагувати</button>
-                    <button class="btn btn-sm btn-danger delete-task">Видалити</button>
-                </div>
-            </li>
-        `);
+        const existingTasks = $('#todo-list .task-text').map(function() {
+            return $(this).text();
+        }).get();
+        if (!existingTasks.includes(taskText)) {
+            $('#todo-list').append(`
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="task-text" style="cursor:pointer;">${taskText}</span>
+                    <div>
+                        <button class="btn btn-sm btn-warning edit-task me-1">Редагувати</button>
+                        <button class="btn btn-sm btn-danger delete-task">Видалити</button>
+                    </div>
+                </li>
+            `);
+        }
     };
-
     loadTasks();
     $('#add-task').on('click', () => {
         const taskText = $('#new-task').val().trim();
@@ -51,4 +56,3 @@ $(document).ready(() => {
     });
 });
 import './styles.scss';
-
