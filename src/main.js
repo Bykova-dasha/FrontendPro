@@ -8,7 +8,7 @@ $(document).ready(() => {
     };
     const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        // Завантажуємо тільки якщо задача ще не існує
+        console.log('Loaded tasks:', tasks);
         tasks.forEach(task => addTaskToList(task));
     };
     const addTaskToList = (taskText) => {
