@@ -23,3 +23,5 @@ chrome-user-data
 .vscode
 /dist/
 /style.css
+my-swapi-app/
+
