@@ -1,10 +1,3 @@
-.swapi-card {
-  border-radius: 15px;
-  transition: transform 0.2s ease-in-out;
-}
 
-.swapi-card:hover {
-  transform: scale(1.02);
-}
 
 /*# sourceMappingURL=styles.css.map */
